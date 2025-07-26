@@ -1,0 +1,144 @@
+### Restaurant Reservation API Tests
+### Main Base  URL: http://localhost:8080/api
+
+
+# Yeni musteri kaydı yapma
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+  "name": "Elif",
+  "surname": "Kaya",
+  "email": "elif.kaya@gmail.com",
+  "phone": "05389234567"
+}
+
+###
+
+# Tum musteri listeleme
+GET http://localhost:8080/api/customers
+
+###
+
+# Belirli musteriyi getirme
+GET http://localhost:8080/api/customers/1
+
+###
+
+# Email ile arama
+GET http://localhost:8080/api/customers/email/zeynep.kaya@gmail.com
+
+###
+
+# Telefon ile arama
+GET http://localhost:8080/api/customers/phone/05325678901
+
+###
+
+### MASA YÖNETİMİ
+
+# Masa ekleme
+POST http://localhost:8080/api/masalar
+Content-Type: application/json
+
+{
+  "masaNo": "T01",
+  "capacity": 4,
+  "active": true
+}
+
+###
+
+# Tum masaları listeleme
+GET http://localhost:8080/api/masalar
+
+###
+
+# Aktif masalari listeleme
+GET http://localhost:8080/api/masalar/active
+
+###
+
+# Masa detayi
+GET http://localhost:8080/api/masalar/1
+
+###
+
+# Masa numarasi ile ara
+GET http://localhost:8080/api/masalar/masa-no/T01
+
+###
+
+### REZERVASYON İŞLEMLERİ
+
+# Rezervasyon olustur
+POST http://localhost:8080/api/reservations
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "masaId": 1,
+  "reservationDate": "2025-07-27",
+  "numberOfPeople": 3,
+  "status": "CONFIRMED"
+}
+
+###
+
+# Tum rezervasyonlari listele
+GET http://localhost:8080/api/reservations
+
+###
+
+# Rezervasyon detayi
+GET http://localhost:8080/api/reservations/1
+
+###
+
+# Musterinin rezervasyonlari
+GET http://localhost:8080/api/reservations/customer/1
+
+###
+
+# Tarihe gore rezervasyonlarii
+GET http://localhost:8080/api/reservations/date/2025-07-27
+
+###
+
+# Rezervasyon iptal etme
+PUT http://localhost:8080/api/reservations/2/cancel
+
+###
+
+### ERROR TESTLERİM:
+
+# Olmayan musteri
+GET http://localhost:8080/api/customers/999
+
+###
+
+# Gecersiz email formati
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+  "name": "Test",
+  "surname": "User",
+  "email": "bozuk-email-format",
+  "phone": "05551111111"
+}
+
+###
+
+# Gecmis tarihli rezervasyon
+POST http://localhost:8080/api/reservations
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "masaId": 1,
+  "reservationDate": "2020-01-01",
+  "numberOfPeople": 4,
+  "status": "CONFIRMED"
+}
+
