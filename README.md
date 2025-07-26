@@ -5,17 +5,17 @@ Project Structure
 
 src/main/java/com/restaurant/reservation/
 
-├── entity/           JPA entities
+entity/           JPA entities
 
-├── dto/              Data Transfer Objects
+dto/              Data Transfer Objects
 
-├── mapper/           MapStruct mappers
+mapper/           MapStruct mappers
 
-├── service/          Business logic
+service/          Business logic
 
-├── controller/       REST controllers
+controller/       REST controllers
 
-└── repository/       Data access layer
+repository/       Data access layer
 
 
 
